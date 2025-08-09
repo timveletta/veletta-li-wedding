@@ -5,9 +5,10 @@ export default function Home() {
         Join us in celebrating the wedding of
       </h3>
       <div className="font-allura text-8xl">
-        <h2>Timothy</h2>
-        <p className="text-2xl">&</p>
-        <h2>Jenny</h2>
+        <h2 className="mr-8">Timothy</h2>
+        <h2 className="ml-8 flex items-center">
+          <span className="text-4xl mr-4">&</span>Jenny
+        </h2>
       </div>
       <div className="text-2xl font-bold font-amatic-sc">
         <h4>Sunday 30th of November, 2025</h4>
