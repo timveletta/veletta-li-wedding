@@ -34,7 +34,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${amaticSC.variable} ${allura.variable}`}>
         <Navigation />
-        {children}
+        <main className="flex flex-col items-center justify-between py-24 px-2 text-center max-w-lg mx-auto">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
