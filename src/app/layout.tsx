@@ -8,12 +8,14 @@ const amaticSC = Amatic_SC({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-amatic-sc",
+  display: "swap",
 });
 
 const allura = Allura({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-allura",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
