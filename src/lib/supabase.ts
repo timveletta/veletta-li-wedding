@@ -10,6 +10,8 @@ export type Guest = {
   id: string;
   first_name: string;
   last_name: string;
+  first_name_2?: string;
+  last_name_2?: string;
   email?: string;
   party_size: number;
   is_plus_one: boolean;
@@ -18,6 +20,20 @@ export type Guest = {
 export type RsvpData = {
   guest_id: string;
   attending: boolean;
+  email?: string;
   dietary_requirements?: string;
   message?: string;
 };
+
+export function getGuestDisplayName(guest: Guest): string {
+  if (guest.party_size > 1 && guest.first_name_2 && guest.last_name_2) {
+    // Different surnames: "John Smith & Jane Doe"
+    return `${guest.first_name} ${guest.last_name} & ${guest.first_name_2} ${guest.last_name_2}`;
+  } else if (guest.party_size > 1 && guest.first_name_2) {
+    // Same surname: "John & Jane Smith"
+    return `${guest.first_name} & ${guest.first_name_2} ${guest.last_name}`;
+  } else {
+    // Individual: "John Smith"
+    return `${guest.first_name} ${guest.last_name}`;
+  }
+}

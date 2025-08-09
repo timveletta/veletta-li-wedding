@@ -22,6 +22,9 @@ export default function InformationPage() {
       <h1 className="text-4xl font-bold font-allura text-primary my-4">
         Venue
       </h1>
+      <p className="font-serif mb-2">
+        <b>Feld and Co</b> - 6/496 Marmion St, Booragoon WA 6154
+      </p>
     </>
   );
 }
