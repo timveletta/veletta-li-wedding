@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Amatic_SC, Allura } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation/navigation";
 import { Footer } from "@/components/footer/footer";
 
-const amaticSC = Amatic_SC({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-amatic-sc",
+const moonTime = localFont({
+  src: "../../public/moon-time-regular.ttf",
+  variable: "--font-moon-time",
   display: "swap",
 });
 
-const allura = Allura({
+const instrumentSerif = Instrument_Serif({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-allura",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -34,11 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${amaticSC.variable} ${allura.variable}`}>
+      <body className={`${moonTime.variable} ${instrumentSerif.variable}`}>
         <Navigation />
-        <main className="flex flex-col items-center justify-between py-24 px-2 text-center max-w-lg mx-auto">
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

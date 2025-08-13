@@ -15,17 +15,17 @@ const menuItems = [
   },
   {
     title: "Schedule",
-    href: "/schedule",
+    href: "/#schedule",
   },
   {
-    title: "Information",
-    href: "/information",
+    title: "FAQ",
+    href: "/#faq",
   },
 ];
 
 export function Navigation() {
   return (
-    <header className="container mx-auto px-4 py-4 flex items-center justify-center">
+    <header className="absolute top-0 left-0 right-0 z-50 px-4 py-4 flex items-center justify-center">
       <NavigationMenu>
         <NavigationMenuList>
           {menuItems.map(({ title, href }) => (

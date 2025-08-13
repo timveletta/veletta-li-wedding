@@ -1,13 +1,13 @@
-export default function InformationPage() {
+export default function FaqSection() {
   return (
-    <>
-      <h1 className="text-4xl font-bold font-allura text-primary my-4">
+    <section id="faq">
+      <h1 className="text-4xl font-bold font-instrument-serif text-primary my-4">
         Dress Code
       </h1>
       <p className="font-serif mb-2">
         <b>Cocktail attire</b>
       </p>
-      <h1 className="text-4xl font-bold font-allura text-primary my-4">
+      <h1 className="text-4xl font-bold font-instrument-serif text-primary my-4">
         Food Options
       </h1>
       <p className="font-serif mb-2">
@@ -19,12 +19,12 @@ export default function InformationPage() {
         We will also have a <b>gelato</b> cart show up later on in the night
         serving some of our favourite flavours.
       </p>
-      <h1 className="text-4xl font-bold font-allura text-primary my-4">
+      <h1 className="text-4xl font-bold font-instrument-serif text-primary my-4">
         Venue
       </h1>
       <p className="font-serif mb-2">
         <b>Feld and Co</b> - 6/496 Marmion St, Booragoon WA 6154
       </p>
-    </>
+    </section>
   );
 }

@@ -76,7 +76,7 @@ export default function RsvpForm() {
   if (stage === "submitted") {
     return (
       <div className="w-full p-6 bg-primary text-white rounded-lg">
-        <h2 className="text-4xl font-allura mb-4">Thank you!</h2>
+        <h2 className="text-4xl font-instrument-serif mb-4">Thank you!</h2>
         <p className="font-serif">
           Your RSVP has been submitted successfully. If you provided an email address,
           you should receive a confirmation email shortly.
