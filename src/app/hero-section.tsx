@@ -10,7 +10,7 @@ export function HeroSection() {
           <span className="sm:text-6xl text-4xl mr-4">&</span>Jenny Li
         </h2>
       </div>
-      <h3 className="sm:text-8xl text-5xl font-moon-time mb-16">
+      <h3 className="sm:text-8xl text-5xl font-moon-time sm:mb-16 mb-8">
         invite you to celebrate our wedding
       </h3>
       <div className="flex flex-col sm:flex-row uppercase justify-center sm:gap-8 gap-2 text-2xl font-bold font-instrument-serif">
