@@ -6,7 +6,6 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
-import { Button } from "../ui/button";
 
 const menuItems = [
   {
@@ -21,11 +20,15 @@ const menuItems = [
     title: "FAQ",
     href: "/#faq",
   },
+  {
+    title: "RSVP",
+    href: "/rsvp",
+  },
 ];
 
 export function Navigation() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-4 py-4 flex items-center justify-center">
+    <header className="absolute top-0 left-0 right-0 z-50 px-4 py-4 flex items-center justify-center bg-primary">
       <NavigationMenu>
         <NavigationMenuList>
           {menuItems.map(({ title, href }) => (
@@ -38,13 +41,6 @@ export function Navigation() {
               </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild>
-              <Button asChild>
-                <Link href="/rsvp">RSVP</Link>
-              </Button>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
