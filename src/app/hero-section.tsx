@@ -16,9 +16,11 @@ export function HeroSection() {
       <h3 className="sm:text-8xl text-5xl font-moon-time sm:mb-16 mb-8">
         invite you to celebrate our wedding
       </h3>
-      <div className="flex flex-col sm:flex-row uppercase justify-center items-center sm:gap-8 gap-2 text-2xl font-bold font-instrument-serif">
-        <h4 className="order-1 sm:order-1">November 30th, 2025</h4>
-        <h4 className="order-2 sm:order-3">5pm Feld & Co</h4>
+      <div className="grid sm:grid-cols-3 uppercase items-center sm:gap-8 gap-2 text-2xl font-bold font-instrument-serif">
+        <h4 className="order-1 sm:order-1 sm:text-right">
+          November 30th, 2025
+        </h4>
+        <h4 className="order-2 sm:order-3 sm:text-left">5pm Feld & Co</h4>
         <Button
           size="lg"
           variant="secondary"

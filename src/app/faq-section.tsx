@@ -69,21 +69,13 @@ export default function FaqSection() {
               You can RSVP directly through this website or by texting Tim on
               0451 122 654. Please RSVP on or before September 30.
             </FaqItem>
-            <FaqItem question="Is there a dress code?">
-              Cocktail attire. Think bright and colourful if you’d like to match
-              the vibe (see colour palette below) — but no pressure! Wear
-              whatever makes you feel fabulous and ready to dance.
-            </FaqItem>
-            <div className="w-full flex h-16 gap-2 mt-6 p-2 bg-white">
-              <div className="flex-1 h-full bg-[#e789a3]"></div>
-              <div className="flex-1 h-full bg-[#c19ae7]"></div>
-              <div className="flex-1 h-full bg-[#fbdb94]"></div>
-              <div className="flex-1 h-full bg-[#87c388]"></div>
-              <div className="flex-1 h-full bg-[#97bee3]"></div>
-            </div>
             <FaqItem question="Can I bring a plus one or kids?">
               As much as we’d love to celebrate with your partners and little
               ones, our venue’s maximum capacity is 75 guests :(
+            </FaqItem>
+            <FaqItem question="Where is the reception?">
+              Good news: you don’t have to find a second location! The ceremony
+              and reception are both happening at Feld & Co.
             </FaqItem>
           </div>
         </div>
@@ -91,10 +83,18 @@ export default function FaqSection() {
       <section id="faq" className="md:py-36 py-48 px-2">
         <div className="container mx-auto grid sm:grid-cols-2">
           <div>
-            <FaqItem question="Where is the reception?">
-              Good news: you don’t have to find a second location! The ceremony
-              and reception are both happening at Feld & Co.
+            <FaqItem question="Is there a dress code?">
+              Cocktail attire. Think bright and colourful if you’d like to match
+              the vibe (see colour palette below) — but no pressure! Wear
+              whatever makes you feel fabulous and ready to dance.
             </FaqItem>
+            <div className="w-full flex h-16 gap-2 mb-8 p-2">
+              <div className="flex-1 h-full bg-[#e789a3]"></div>
+              <div className="flex-1 h-full bg-[#c19ae7]"></div>
+              <div className="flex-1 h-full bg-[#fbdb94]"></div>
+              <div className="flex-1 h-full bg-[#87c388]"></div>
+              <div className="flex-1 h-full bg-[#97bee3]"></div>
+            </div>
             <FaqItem question="Where do I park?">
               There’s no parking at the venue itself, but plenty of spaces are
               available at the commercial buildings further along (498-504
