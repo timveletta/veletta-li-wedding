@@ -26,19 +26,21 @@ export default function RsvpForm() {
     try {
       const { data, error } = await supabase
         .from("guests")
-        .select(`
+        .select(
+          `
           *,
           rsvps!left(id)
-        `)
+        `
+        )
         .or(`last_name.ilike.%${surname}%,last_name_2.ilike.%${surname}%`)
-        .is('rsvps.id', null);
+        .is("rsvps.id", null);
 
       if (error) {
         console.error("Error:", error);
         setError("Error looking up guests. Please try again.");
       } else if (data.length === 0) {
         setError(
-          "No guests found with that surname who haven't already RSVP'd. Please check your spelling or contact the couple if you need to update your RSVP."
+          "No guests found with that surname who haven't already RSVP'd. Please check your spelling or contact Tim on 0451122654 if you need to update your RSVP."
         );
       } else {
         setGuests(data);
@@ -86,8 +88,8 @@ export default function RsvpForm() {
       <div className="w-full p-6 bg-primary text-white rounded-lg">
         <h2 className="text-4xl font-instrument-serif mb-4">Thank you!</h2>
         <p className="font-serif">
-          Your RSVP has been submitted successfully. If you provided an email address,
-          you should receive a confirmation email shortly.
+          Your RSVP has been submitted successfully. If you provided an email
+          address, you should receive a confirmation email shortly.
         </p>
       </div>
     );
