@@ -12,6 +12,7 @@ export default function RsvpForm() {
   const [stage, setStage] = useState<FormStage>("surname");
   const [guests, setGuests] = useState<Guest[]>([]);
   const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
+  const [error, setError] = useState<string>("");
   const [rsvpData, setRsvpData] = useState<RsvpData>({
     guest_id: "",
     attending: true,
@@ -21,18 +22,23 @@ export default function RsvpForm() {
   });
 
   const handleSurnameSubmit = async (surname: string) => {
+    setError("");
     try {
       const { data, error } = await supabase
         .from("guests")
-        .select("*")
-        .or(`last_name.ilike.%${surname}%,last_name_2.ilike.%${surname}%`);
+        .select(`
+          *,
+          rsvps!left(id)
+        `)
+        .or(`last_name.ilike.%${surname}%,last_name_2.ilike.%${surname}%`)
+        .is('rsvps.id', null);
 
       if (error) {
         console.error("Error:", error);
-        alert("Error looking up guests. Please try again.");
+        setError("Error looking up guests. Please try again.");
       } else if (data.length === 0) {
-        alert(
-          "No guests found with that surname. Please check your spelling or contact the couple."
+        setError(
+          "No guests found with that surname who haven't already RSVP'd. Please check your spelling or contact the couple if you need to update your RSVP."
         );
       } else {
         setGuests(data);
@@ -40,17 +46,19 @@ export default function RsvpForm() {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error looking up guests. Please try again.");
+      setError("Error looking up guests. Please try again.");
     }
   };
 
   const handleGuestSelection = (guest: Guest) => {
+    setError("");
     setSelectedGuest(guest);
     setRsvpData({ ...rsvpData, guest_id: guest.id });
     setStage("rsvp-details");
   };
 
   const handleRsvpSubmit = async (data: RsvpData) => {
+    setError("");
     try {
       const response = await fetch("/api/rsvp", {
         method: "POST",
@@ -63,13 +71,13 @@ export default function RsvpForm() {
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Error:", errorData);
-        alert("Error submitting RSVP. Please try again.");
+        setError("Error submitting RSVP. Please try again.");
       } else {
         setStage("submitted");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting RSVP. Please try again.");
+      setError("Error submitting RSVP. Please try again.");
     }
   };
 
@@ -86,27 +94,50 @@ export default function RsvpForm() {
   }
 
   if (stage === "surname") {
-    return <SurnameForm onSubmit={handleSurnameSubmit} />;
+    return (
+      <div className="w-full space-y-4">
+        {error && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-700">{error}</p>
+          </div>
+        )}
+        <SurnameForm onSubmit={handleSurnameSubmit} />
+      </div>
+    );
   }
 
   if (stage === "guest-selection") {
     return (
-      <GuestSelectionForm
-        guests={guests}
-        onGuestSelect={handleGuestSelection}
-        onBack={() => setStage("surname")}
-      />
+      <div className="w-full space-y-4">
+        {error && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-700">{error}</p>
+          </div>
+        )}
+        <GuestSelectionForm
+          guests={guests}
+          onGuestSelect={handleGuestSelection}
+          onBack={() => setStage("surname")}
+        />
+      </div>
     );
   }
 
   if (stage === "rsvp-details" && selectedGuest) {
     return (
-      <RsvpDetailsForm
-        guest={selectedGuest}
-        initialData={rsvpData}
-        onSubmit={handleRsvpSubmit}
-        onBack={() => setStage("guest-selection")}
-      />
+      <div className="w-full space-y-4">
+        {error && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-700">{error}</p>
+          </div>
+        )}
+        <RsvpDetailsForm
+          guest={selectedGuest}
+          initialData={rsvpData}
+          onSubmit={handleRsvpSubmit}
+          onBack={() => setStage("guest-selection")}
+        />
+      </div>
     );
   }
 

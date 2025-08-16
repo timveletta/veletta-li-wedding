@@ -14,7 +14,6 @@ export type Guest = {
   last_name_2?: string;
   email?: string;
   party_size: number;
-  is_plus_one: boolean;
 };
 
 export type RsvpData = {

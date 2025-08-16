@@ -27,6 +27,9 @@ export default function GuestSelectionForm({
           >
             <div className="text-left">
               <div className="font-medium">{getGuestDisplayName(guest)}</div>
+              {guest.party_size > 1 && (
+                <div className="text-sm text-gray-600">Party of {guest.party_size}</div>
+              )}
             </div>
           </Button>
         ))}
