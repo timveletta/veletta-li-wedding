@@ -24,16 +24,26 @@ export default function RsvpForm() {
   const handleSurnameSubmit = async (surname: string) => {
     setError("");
     try {
-      const { data, error } = await supabase
+      // First get guests with matching surname
+      const { data: matchingGuests, error: guestError } = await supabase
         .from("guests")
-        .select(
-          `
-          *,
-          rsvps!left(id)
-        `
-        )
-        .or(`last_name.ilike.%${surname}%,last_name_2.ilike.%${surname}%`)
-        .is("rsvps.id", null);
+        .select("*")
+        .or(`last_name.ilike.%${surname}%,last_name_2.ilike.%${surname}%`);
+
+      if (guestError) throw guestError;
+
+      // Then filter out guests who have already RSVP'd
+      const guestIds = matchingGuests.map(guest => guest.id);
+      const { data: existingRsvps, error: rsvpError } = await supabase
+        .from("rsvps")
+        .select("guest_id")
+        .in("guest_id", guestIds);
+
+      if (rsvpError) throw rsvpError;
+
+      const rsvpedGuestIds = new Set(existingRsvps.map(rsvp => rsvp.guest_id));
+      const data = matchingGuests.filter(guest => !rsvpedGuestIds.has(guest.id));
+      const error = null;
 
       if (error) {
         console.error("Error:", error);
