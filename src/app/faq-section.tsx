@@ -92,7 +92,7 @@ export default function FaqSection() {
               <div className="flex-1 h-full bg-[#e789a3]"></div>
               <div className="flex-1 h-full bg-[#c19ae7]"></div>
               <div className="flex-1 h-full bg-[#fbdb94]"></div>
-              <div className="flex-1 h-full bg-[#87c388]"></div>
+              <div className="flex-1 h-full bg-[#abc5a1]"></div>
               <div className="flex-1 h-full bg-[#97bee3]"></div>
             </div>
             <FaqItem question="Where do I park?">

@@ -108,20 +108,22 @@ export default function RsvpDetailsForm({
         </div>
       )}
 
-      {!rsvpData.attending && (
-        <div className="space-y-2">
-          <Label htmlFor="message">Message for the couple</Label>
-          <Textarea
-            id="message"
-            value={rsvpData.message}
-            onChange={(e) =>
-              setRsvpData({ ...rsvpData, message: e.target.value })
-            }
-            rows={3}
-            placeholder="Let the couple know your thoughts..."
-          />
-        </div>
-      )}
+      <div className="space-y-2">
+        <Label htmlFor="message">Message for the couple</Label>
+        <Textarea
+          id="message"
+          value={rsvpData.message}
+          onChange={(e) =>
+            setRsvpData({ ...rsvpData, message: e.target.value })
+          }
+          rows={3}
+          placeholder={`Leave us a note ${
+            rsvpData.attending
+              ? "or if only some of your party can attend, let us known who will be joining"
+              : "(we'll miss you!)"
+          }`}
+        />
+      </div>
 
       <div className="flex space-x-2">
         <Button
